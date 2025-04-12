@@ -7,7 +7,7 @@
 struct CostFunctor {
   template <typename T>
   bool operator()(const T* const x, T* residual) const {
-    residual[0] = 10.0 - x[0];
+    residual[0] = 12.0 - x[0] * x[0];
     return true;
   }
 };
@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
   options.minimizer_progress_to_stdout = true;
   ceres::Solver::Summary summary;
   ceres::Solve(options, &problem, &summary);
-  std::cout << summary.BriefReport() << "\n";
+  std::cout << summary.total_time_in_seconds << "\n";
   std::cout << "x : " << initial_x << " -> " << x << "\n";
   return 0;
 }
