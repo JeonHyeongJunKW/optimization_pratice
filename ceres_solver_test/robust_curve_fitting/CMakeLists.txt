@@ -28,5 +28,4 @@ target_link_libraries(
   absl::log_initialize
   absl::log
   Ceres::ceres
-  # realsense2::realsense2
 )
